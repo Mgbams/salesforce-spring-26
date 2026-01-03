@@ -17,4 +17,4 @@ Thumbs.db
 node_modules/
 
 # force-app
-force-app/
+#force-app/
