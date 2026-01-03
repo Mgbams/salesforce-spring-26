@@ -1,0 +1,20 @@
+# Salesforce / SFDX
+.sfdx/
+.sf/
+.localdevserver/
+
+# VS Code
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Node / tooling
+node_modules/
+
+# force-app
+force-app/

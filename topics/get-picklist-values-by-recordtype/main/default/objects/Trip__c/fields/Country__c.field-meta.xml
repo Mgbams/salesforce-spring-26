@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Country__c</fullName>
+    <label>Country</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Continent__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>France</fullName>
+                <default>false</default>
+                <label>France</label>
+            </value>
+            <value>
+                <fullName>Germany</fullName>
+                <default>false</default>
+                <label>Germany</label>
+            </value>
+            <value>
+                <fullName>United States</fullName>
+                <default>false</default>
+                <label>United States</label>
+            </value>
+            <value>
+                <fullName>Canada</fullName>
+                <default>false</default>
+                <label>Canada</label>
+            </value>
+            <value>
+                <fullName>Japan</fullName>
+                <default>false</default>
+                <label>Japan</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Europe</controllingFieldValue>
+            <valueName>France</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Europe</controllingFieldValue>
+            <valueName>Germany</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>North America</controllingFieldValue>
+            <valueName>United States</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>North America</controllingFieldValue>
+            <valueName>Canada</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Asia</controllingFieldValue>
+            <valueName>Japan</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

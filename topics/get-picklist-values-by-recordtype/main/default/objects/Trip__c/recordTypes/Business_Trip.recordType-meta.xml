@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Business_Trip</fullName>
+    <active>true</active>
+    <description>Business Trip record type</description>
+    <label>Business Trip</label>
+    <picklistValues>
+        <picklist>City__c</picklist>
+        <values>
+            <fullName>Berlin</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New York</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Continent__c</picklist>
+        <values>
+            <fullName>Europe</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>North America</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Country__c</picklist>
+        <values>
+            <fullName>Germany</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>United States</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

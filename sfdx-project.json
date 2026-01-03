@@ -1,0 +1,16 @@
+{
+  "packageDirectories": [
+    {
+      "path": "force-app",
+      "default": true
+    },
+    {
+      "path": "topics/get-picklist-values-by-recordtype",
+      "default": false
+    }
+  ],
+  "name": "Spring 26",
+  "namespace": "",
+  "sfdcLoginUrl": "https://login.salesforce.com",
+  "sourceApiVersion": "66.0"
+}

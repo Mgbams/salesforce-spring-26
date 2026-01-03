@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Vacation</fullName>
+    <active>true</active>
+    <description>Vacation record type</description>
+    <label>Vacation</label>
+    <picklistValues>
+        <picklist>City__c</picklist>
+        <values>
+            <fullName>Paris</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Toronto</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Continent__c</picklist>
+        <values>
+            <fullName>Europe</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>North America</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Country__c</picklist>
+        <values>
+            <fullName>Canada</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>France</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>
