@@ -109,7 +109,7 @@ Europe          | United Kingdom | London
 
 ### File Structure
 ```
-force-app/main/default/
+get-picklist-values-by-recordtype/main/default/
 ├── classes/
 │   ├── TripPicklistController.cls
 │   └── TripPicklistController.cls-meta.xml
