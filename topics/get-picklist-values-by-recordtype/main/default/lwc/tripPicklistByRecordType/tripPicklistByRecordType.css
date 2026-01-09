@@ -1,0 +1,12 @@
+.slds-scrollable_y {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.slds-table th {
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 1;
+  box-shadow: 0 2px 0 0 #dddbda;
+}

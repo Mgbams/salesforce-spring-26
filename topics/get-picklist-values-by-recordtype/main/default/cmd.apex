@@ -1,1 +1,1 @@
-TripPicklistByRecordTypeDemo.run();
+TripPicklistController.run();

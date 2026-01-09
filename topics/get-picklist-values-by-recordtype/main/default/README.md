@@ -17,7 +17,7 @@ using `ConnectApi.RecordUi.getPicklistValuesByRecordType`.
   - `Country__c` (dependent on Continent\_\_c)
   - `City__c` (dependent on Country\_\_c)
 - You must have permission to run Apex and access the object/fields.
-- Api version of Apex class should be 66.0 or above as shown in TripPicklistByRecordTypeDemo.cls-meta.xml
+- Api version of Apex class should be 66.0 or above as shown in TripPicklistController.cls-meta.xml
 - Api ersion of org should be 66.0 or above
 
 ## Deploy the topic to your org
@@ -46,7 +46,7 @@ This demo can be executed either from **VS Code** (recommended for developers) o
    **SFDX: Execute Anonymous Apex with Editor Contents**
 4. In a new file (or an `.apex` script), paste the following code:
    ```apex
-   TripPicklistByRecordTypeDemo.run();
+   TripPicklistController.run();
    ```
 5. Execute the script.
 6. Open the generated Debug Log and inspect the output printed by the demo.
@@ -58,7 +58,7 @@ This demo can be executed either from **VS Code** (recommended for developers) o
 3. In the Developer Console menu, select **Debug → Open Execute Anonymous Window**.
 4. Paste the following Apex code into the window:
    ```apex
-   TripPicklistByRecordTypeDemo.run();
+   TripPicklistController.run();
    ```
 5. Click Execute.
 6. Open the generated Debug Log.

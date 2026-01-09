@@ -1,0 +1,113 @@
+<template>
+    <lightning-card title="Trip Picklist Values by Record Type" icon-name="standard:picklist">
+        <div class="slds-p-around_medium">
+            <!-- Record Type Selection -->
+            <div class="slds-m-bottom_medium">
+                <lightning-combobox
+                    label="Select Record Type"
+                    value={selectedRecordTypeId}
+                    placeholder="Choose a record type..."
+                    options={recordTypes}
+                    onchange={handleRecordTypeChange}
+                    class="slds-m-bottom_small"
+                ></lightning-combobox>
+                
+                <div if:true={selectedRecordTypeName} class="slds-m-vertical_small">
+                    <span class="slds-text-title_bold">Selected: </span>
+                    <span class="slds-text-color_success">{selectedRecordTypeName}</span>
+                </div>
+            </div>
+
+            <!-- Loading Spinner -->
+            <template if:true={isLoading}>
+                <div class="slds-align_absolute-center slds-m-vertical_large">
+                    <lightning-spinner alternative-text="Loading"></lightning-spinner>
+                </div>
+            </template>
+
+            <!-- Error Message -->
+            <template if:true={error}>
+                <div class="slds-notify slds-notify_alert slds-theme_error slds-m-bottom_medium" role="alert">
+                    <span class="slds-assistive-text">Error</span>
+                    <span class="slds-icon_container slds-icon-utility-error slds-m-right_x-small">
+                        <lightning-icon icon-name="utility:error" size="x-small"></lightning-icon>
+                    </span>
+                    <h2>{error}</h2>
+                </div>
+            </template>
+
+            <!-- Picklist Hierarchy Display -->
+            <template if:true={hasPicklistData}>
+                <div class="slds-box slds-theme_default">
+                    <div class="slds-text-heading_small slds-m-bottom_medium">
+                        Available Combinations ({picklistCount} total)
+                    </div>
+                    
+                    <div class="slds-scrollable_y" style="max-height: 500px;">
+                        <table class="slds-table slds-table_bordered slds-table_striped">
+                            <thead>
+                                <tr class="slds-text-title_caps">
+                                    <th scope="col" width="33%">
+                                        <div class="slds-truncate">Continent</div>
+                                    </th>
+                                    <th scope="col" width="33%">
+                                        <div class="slds-truncate">Country</div>
+                                    </th>
+                                    <th scope="col" width="34%">
+                                        <div class="slds-truncate">City</div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <template for:each={picklistHierarchy} for:item="continent">
+                                    <template for:each={continent.countries} for:item="country">
+                                        <template for:each={country.cities} for:item="city">
+                                            <tr key={city.key}>
+                                                <td>
+                                                    <div class="slds-truncate" title={continent.label}>
+                                                        <template if:true={country.isFirstCountry}>
+                                                            {continent.label}
+                                                        </template>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="slds-truncate" title={country.label}>
+                                                        <template if:true={city.isFirstCity}>
+                                                            {country.label}
+                                                        </template>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="slds-truncate" title={city.label}>
+                                                        {city.label}
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </template>
+                                    </template>
+                                </template>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </template>
+
+            <!-- No Data Message -->
+            <template if:true={selectedRecordTypeId}>
+              <template if:false={hasPicklistData}>
+                <template if:false={isLoading}>
+                  <template if:false={error}>
+                      <div class="slds-notify slds-notify_alert slds-theme_info" role="alert">
+                        <span class="slds-assistive-text">Info</span>
+                        <span class="slds-icon_container slds-icon-utility-info slds-m-right_x-small">
+                            <lightning-icon icon-name="utility:info" size="x-small"></lightning-icon>
+                        </span>
+                        <h2>No picklist values found for the selected record type.</h2>
+                      </div>
+                  </template>
+                </template>
+              </template>
+            </template>
+        </div>
+    </lightning-card>
+</template>
