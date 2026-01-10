@@ -265,7 +265,7 @@ For issues or questions:
 
 ---
 
-**Last Updated**: $(date)
+**Last Updated**:  January 10, 2026
 **Version**: 1.0.0
 **Compatibility**: Salesforce API 66.0+
 ```
