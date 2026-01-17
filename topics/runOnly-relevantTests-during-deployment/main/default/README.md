@@ -204,11 +204,6 @@ runOnly-relevantTests-during-deployment/
 
 ---
 
-## 📝 License & Support
-
-### License
-MIT License — see `LICENSE.md`
-
 ### Support
 - Open a GitHub Issue
 - Contact **Kingsley MGBAMS**
