@@ -61,8 +61,6 @@ This demo shows how to use all three together.
 
 ---
 
----
-
 ## 🚀 Usage
 
 ### Deploy Using RunRelevantTests
