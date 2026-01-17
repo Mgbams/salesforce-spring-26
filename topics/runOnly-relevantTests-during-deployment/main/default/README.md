@@ -1,4 +1,3 @@
-```md
 # 🚀 Deploy Apex Components Faster by Running Only Relevant Tests (Beta)
 
 ![Salesforce](https://img.shields.io/badge/Salesforce-Spring%20'26-blue)
@@ -220,4 +219,3 @@ MIT License — see `LICENSE.md`
 ---
 
 📅 **Last Updated:** 2026-01-17
-```
