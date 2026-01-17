@@ -1,0 +1,1 @@
+## sf project deploy start --source-dir topics/runOnly-relevantTests-during-deployment --test-level RunRelevantTests --target-org spring26 --dry-run

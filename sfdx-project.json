@@ -7,6 +7,10 @@
     {
       "path": "topics/get-picklist-values-by-recordtype",
       "default": false
+    },
+    {
+      "path": "topics/runOnly-relevantTests-during-deployment",
+      "default": false
     }
   ],
   "name": "Spring 26",
