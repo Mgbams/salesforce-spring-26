@@ -1,3 +1,9 @@
+/*
+ * Component-targeted test:
+ * This test is executed by RunRelevantTests only when the
+ * OpportunityDiscountService Apex class or OpportunityTrigger
+ * is new or modified in the deployment payload.
+*/
 @IsTest(testFor='ApexClass:OpportunityDiscountService,ApexTrigger:OpportunityTrigger')
 private class DiscountFlowIntegrationTest {
     @IsTest

@@ -96,9 +96,9 @@ Use when a test must always execute, regardless of what changes.
 
 ```apex
 @IsTest(critical=true)
-public class AccountAccessibleTest {
+public class CoreSalesRegressionSmokeTest {
     @IsTest
-    static void verifyAccountAccess() {
+    static void smoke() {
         // Critical validation logic
     }
 }
@@ -161,7 +161,6 @@ runOnly-relevantTests-during-deployment/
         ├── classes/
         │   ├── OpportunityDiscountService.cls
         │   ├── OpportunityDiscountServiceTest.cls
-        │   ├── AccountAccessibleTest.cls
         │   ├── CoreSalesRegressionSmokeTest.cls
         │   └── DiscountFlowIntegrationTest.cls
         ├── layouts/

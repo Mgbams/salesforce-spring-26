@@ -1,3 +1,8 @@
+/*
+ * Dependency-driven test:
+ * Automatically selected by RunRelevantTests when changes impact
+ * OpportunityDiscountService or OpportunityTrigger.
+*/
 @IsTest
 private class OpportunityDiscountServiceTest {
     @IsTest
