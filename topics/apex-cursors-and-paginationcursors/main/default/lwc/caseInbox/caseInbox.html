@@ -1,0 +1,41 @@
+<template>
+    <lightning-card title="My Open Cases (UI Paging with Apex Cursors)">
+        <template if:true={records}>
+            <lightning-datatable
+                key-field="Id"
+                data={records}
+                columns={columns}
+                hide-checkbox-column>
+            </lightning-datatable>
+        </template>
+
+        <template if:true={error}>
+            <div class="slds-text-color_error slds-p-around_small">
+                {error}
+            </div>
+        </template>
+
+        <div class="slds-m-top_medium slds-p-horizontal_small slds-grid slds-grid_align-spread slds-grid_vertical-align-center">
+            <div>
+                <lightning-button-group>
+                    <lightning-button
+                        label="Previous"
+                        onclick={prev}
+                        disabled={isFirst}>
+                    </lightning-button>
+
+                    <lightning-button
+                        label="Next"
+                        onclick={next}
+                        disabled={isLast}>
+                    </lightning-button>
+                </lightning-button-group>
+            </div>
+
+            <div class="slds-text-body_small">
+                Page <strong>{currentPage}</strong> of <strong>{totalPages}</strong>
+                • <strong>{totalRecords}</strong> records
+            </div>
+        </div>
+    </lightning-card>
+</template>
