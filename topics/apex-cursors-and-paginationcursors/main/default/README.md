@@ -1,4 +1,3 @@
-````md
 # 🚀 Apex Cursors & Pagination Cursors (Spring ’26) — UI Paging + Queueable Processing Demo
 
 ![Salesforce](https://img.shields.io/badge/Salesforce-Spring%20'26-blue)
