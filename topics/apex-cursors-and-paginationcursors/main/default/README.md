@@ -3,7 +3,6 @@
 ![Salesforce](https://img.shields.io/badge/Salesforce-Spring%20'26-blue)
 ![Apex](https://img.shields.io/badge/Apex-Testing-purple)
 ![SFDX](https://img.shields.io/badge/SFDX-CLI-green)
-![Status](https://img.shields.io/badge/Feature-Beta-orange)
 
 ---
 
