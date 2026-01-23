@@ -21,12 +21,12 @@ public class OpportunityDiscountService {
         }
     }
 
-    public static void updateCustomerType(List<Opportunity> newList, Map<Id, Opportunity> oldMap) { 
+    /*public static void updateCustomerType(List<Opportunity> newList, Map<Id, Opportunity> oldMap) { 
         for (Opportunity opp : newList) { 
             if (oldMap == null) { 
                 opp.Type = 'New Customer'; 
             } 
         } 
-    }
+    }*/
 }
 
