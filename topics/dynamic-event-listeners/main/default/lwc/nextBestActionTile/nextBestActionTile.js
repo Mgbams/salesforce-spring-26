@@ -35,7 +35,7 @@ export default class NextBestActionTile extends LightningElement {
         );
     }
 
-    // DOM event handlers (same behavior as before)
+    // DOM event handlers
     handleMouseEnter = () => {
         this.dispatchPreview();
     };

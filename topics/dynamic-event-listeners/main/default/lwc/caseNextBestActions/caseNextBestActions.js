@@ -108,7 +108,7 @@ export default class CaseNextBestActions extends LightningElement {
                 );
             }
 
-            // Refresh record page UI so Owner/Status updates appear
+            // Refresh record page UI so Owner/Status/Priority updates appear
             getRecordNotifyChange([{ recordId: this.recordId }]);
         } catch (e) {
             const msg =
