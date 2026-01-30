@@ -1,0 +1,16 @@
+<template>
+    <article
+        class="tile"
+        tabindex="0"
+        role="button"
+        aria-label={actionLabel}
+        lwc:on={domListeners}
+    >
+        <div class="tile__header">
+            <lightning-icon icon-name={iconName} size="small"></lightning-icon>
+            <h3 class="tile__title">{actionLabel}</h3>
+        </div>
+
+        <p class="tile__category">{category}</p>
+    </article>
+</template>

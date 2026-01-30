@@ -1,0 +1,30 @@
+.tile {
+    display: block;
+    border: 1px solid var(--lwc-colorBorder, #dddbda);
+    border-radius: 0.5rem;
+    padding: 0.75rem;
+    background: var(--lwc-colorBackgroundAlt, #ffffff);
+    cursor: pointer;
+}
+
+.tile:focus {
+    outline: 2px solid var(--lwc-colorBorderBrand, #1b96ff);
+    outline-offset: 2px;
+}
+
+.tile__header {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.tile__title {
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+.tile__category {
+    margin: 0.5rem 0 0;
+    color: var(--lwc-colorTextLabel, #706e6b);
+    font-size: 0.8rem;
+}

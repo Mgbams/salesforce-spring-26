@@ -1,0 +1,65 @@
+<template>
+    <lightning-card title="Next Best Actions" icon-name="utility:choice">
+        <div class="slds-p-horizontal_small slds-p-top_small">
+            <lightning-combobox
+                name="mode"
+                label="Interaction Mode"
+                value={interactionMode}
+                options={modeOptions}
+                onchange={handleModeChange}
+            ></lightning-combobox>
+        </div>
+
+        <template if:true={errorMessage}>
+            <div class="slds-p-around_small slds-text-color_error">
+                {errorMessage}
+            </div>
+        </template>
+
+        <div class="layout slds-p-around_small">
+            <!-- LEFT: Tiles -->
+            <div class="tiles">
+                <template if:true={actions}>
+                    <template for:each={actions} for:item="a">
+                        <c-next-best-action-tile
+                            key={a.id}
+                            action-id={a.id}
+                            action-label={a.label}
+                            description={a.description}
+                            category={a.category}
+                            icon-name={a.iconName}
+                            lwc:on={tileListeners}
+                        ></c-next-best-action-tile>
+                    </template>
+                </template>
+
+                <template if:false={actions}>
+                    <div class="slds-text-color_weak slds-p-around_small">
+                        No recommended actions yet.
+                    </div>
+                </template>
+            </div>
+
+            <!-- RIGHT: Preview panel -->
+            <aside class="preview slds-p-left_small">
+                <template if:true={preview}>
+                    <h3 class="slds-text-heading_small slds-m-bottom_x-small">
+                        Preview: {preview.actionLabel}
+                    </h3>
+                    <p class="slds-text-body_regular slds-m-bottom_small">
+                        {preview.description}
+                    </p>
+                    <p class="slds-text-color_weak slds-text-body_small">
+                        Category: {preview.category}
+                    </p>
+                </template>
+
+                <template if:false={preview}>
+                    <div class="slds-text-color_weak slds-p-around_small">
+                        Hover (or focus) an action to preview details.
+                    </div>
+                </template>
+            </aside>
+        </div>
+    </lightning-card>
+</template>
