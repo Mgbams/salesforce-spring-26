@@ -65,7 +65,7 @@ public with sharing class CaseNextBestActionsController {
         // Pull Contact email if present; otherwise use SuppliedEmail (Web-to-Case)
         Case caseToBeUpdated = [
             SELECT Id, CaseNumber, Subject, Status,
-                Contact.Email,
+                Contact.Email, Contact.Name,
                 SuppliedEmail, SuppliedName
             FROM Case
             WHERE Id = :caseId
@@ -89,20 +89,24 @@ public with sharing class CaseNextBestActionsController {
             );
         }
 
-        String greetingName = String.isNotBlank(caseToBeUpdated.SuppliedName) ? caseToBeUpdated.SuppliedName : 'Customer';
+        String greetingName = String.isNotBlank(caseToBeUpdated.Contact.Name) ? caseToBeUpdated.Contact.Name : 'Customer';
 
         Messaging.SingleEmailMessage msg = new Messaging.SingleEmailMessage();
         msg.setToAddresses(new String[] { toAddress });
-        msg.setSubject('Update: Your Case Has Been Escalated (Case ' + caseToBeUpdated.CaseNumber + ')');
+        msg.setSubject('Update: Your support Case Has Been Escalated ( ' + caseToBeUpdated.CaseNumber + ')');
+        msg.setSenderDisplayName('Good Days Corporation');
+        msg.setReplyTo('support@gooddays.com');
 
         // Keep the content simple and professional
         String body =
             'Hello ' + greetingName + ',' + '\n\n' +
-            'We wanted to let you know that your case (Case ' + caseToBeUpdated.CaseNumber + ') has been escalated ' +
+            'We are writing to let you know that your support case ( ' + caseToBeUpdated.CaseNumber + ' ) has been escalated ' +
             'to ensure it receives the appropriate attention.' + '\n\n' +
             'We will follow up with you as soon as we have an update.' + '\n\n' +
             'Thank you,' + '\n' +
-            'Support Team';
+            'Support Team' + '\n' +
+            'Good Days Corporation' + '\n' +
+            'support@gooddays.com';
 
         msg.setPlainTextBody(body);
 

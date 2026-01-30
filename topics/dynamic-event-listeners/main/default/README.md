@@ -1,9 +1,8 @@
 ![Salesforce](https://img.shields.io/badge/Salesforce-Spring%20'26-blue)
 ![Apex](https://img.shields.io/badge/Apex-Testing-purple)
 ![SFDX](https://img.shields.io/badge/SFDX-CLI-green)
-![Status](https://img.shields.io/badge/Feature-Beta-orange)
 
-# Dynamic Event Listeners (Spring ’26) — Trailhead-Style Demo Repo 🚀
+# Dynamic Event Listeners (Spring ’26) — Demo Repo 🚀
 
 > ⚡ A hands-on Salesforce Spring ’26 demo showcasing **Dynamic Event Listeners in LWC (`lwc:on`)** using a real Case Record Page scenario (Assign, Escalate, Email Customer).
 
@@ -21,14 +20,13 @@
   - “Next Best Actions” Case UI panel with interaction modes
   - Real Apex actions: assign owner, escalate status/priority, email customer
   - Record page refresh using Lightning Data Service notifications
-  - Clean, Trailhead-style structure for learning + reuse
 
 ---
 
 ## 📋 Overview 🌱
 
 ### 🎯 What This Repo Is
-This repository is a **Trailhead-style demo project** for the Spring ’26 feature:
+This repository is a **demo project** for the Spring ’26 feature:
 
 ✅ **Dynamic Event Listeners in LWC (`lwc:on`)**
 
@@ -138,7 +136,7 @@ And an **Interaction Mode** combobox:
 
 ---
 
-### Step-by-step demo flow (Trailhead-style)
+### Step-by-step demo flow
 
 #### 1) Add the component to a Case Record Page
 
