@@ -116,19 +116,6 @@ sfdx force:org:open
 5. Open in org:
 
    * Run: **SFDX: Open Default Org**
-
----
-
-### Method C — Manual Deployment (Not Recommended)
-
-You *can* deploy manually via:
-
-* Setup → **Apex Classes**
-* Setup → **Lightning Web Components**
-* Setup → **Lightning App Builder**
-
-…but this repo is designed for Salesforce DX workflows.
-
 ---
 
 ## 🧪 Usage
