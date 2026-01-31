@@ -15,9 +15,7 @@ export default class NextBestActionTile extends LightningElement {
                     actionLabel: this.actionLabel,
                     description: this.description,
                     category: this.category
-                },
-                bubbles: true,
-                composed: true
+                }
             })
         );
     }
@@ -28,9 +26,7 @@ export default class NextBestActionTile extends LightningElement {
                 detail: {
                     actionId: this.actionId,
                     actionLabel: this.actionLabel
-                },
-                bubbles: true,
-                composed: true
+                }
             })
         );
     }
