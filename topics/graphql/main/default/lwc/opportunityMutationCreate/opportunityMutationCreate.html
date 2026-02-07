@@ -1,0 +1,42 @@
+<template>
+    <lightning-card title="Create Opportunity" icon-name="standard:opportunity">
+        <div class="slds-var-m-around_medium">
+
+            <template lwc:if={errors}>
+                <div class="slds-text-color_error slds-var-m-bottom_small">
+                    {errors}
+                </div>
+            </template>
+
+            <lightning-input
+                label="Opportunity Name"
+                value={opportunityName}
+                onchange={handleNameChange}
+                class="slds-var-m-bottom_small">
+            </lightning-input>
+
+            <lightning-input
+                label="Amount"
+                type="number"
+                value={amount}
+                onchange={handleAmountChange}
+                class="slds-var-m-bottom_small">
+            </lightning-input>
+
+            <lightning-button
+                label="Create Opportunity"
+                variant="brand"
+                onclick={handleCreate}
+                disabled={isLoading}>
+            </lightning-button>
+
+            <lightning-spinner
+                lwc:if={isLoading}
+                alternative-text="Creating..."
+                size="small"
+                class="slds-var-m-left_medium">
+            </lightning-spinner>
+
+        </div>
+    </lightning-card>
+</template>
