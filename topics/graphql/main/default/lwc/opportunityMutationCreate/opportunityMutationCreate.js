@@ -1,8 +1,7 @@
-import { LightningElement } from 'lwc';
+import { LightningElement, wire } from 'lwc';
 import { gql, executeMutation } from 'lightning/graphql';
 import { publish, MessageContext } from 'lightning/messageService';
 import OPPORTUNITY_REFRESH from '@salesforce/messageChannel/opportunityRefresh__c';
-import { wire } from 'lwc';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 
 export default class OpportunityMutationCreate extends LightningElement {
