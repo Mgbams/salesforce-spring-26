@@ -1,0 +1,28 @@
+<template>
+    <lightning-card title="Deal Escalation" icon-name="standard:opportunity">
+        <div class="slds-p-around_medium">
+
+            <lightning-input
+                label="Escalation Reason"
+                value={reason}
+                onchange={handleReasonChange}
+                class="slds-m-bottom_small">
+            </lightning-input>
+
+            <lightning-input
+                type="number"
+                label="Requested Discount (%)"
+                value={discountPercent}
+                onchange={handleDiscountChange}
+                class="slds-m-bottom_small">
+            </lightning-input>
+
+            <lightning-button
+                label="Request Escalation"
+                variant="brand"
+                onclick={handleLaunchFlow}>
+            </lightning-button>
+
+        </div>
+    </lightning-card>
+</template>
