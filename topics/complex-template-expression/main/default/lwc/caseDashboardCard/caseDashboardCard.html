@@ -1,0 +1,43 @@
+<!-- caseDashboardCard.html -->
+<template>
+    <lightning-card title="Case Dashboard" icon-name="standard:case">
+        <div class="slds-p-around_medium">
+
+            <!-- 1. Full Name via string concatenation -->
+            <p class="slds-text-heading_small">
+                Contact: {firstName + ' ' + lastName}
+            </p>
+
+            <!-- 2. Case age displayed using arithmetic -->
+            <p>
+                Case Age: {daysOpen} days
+            </p>
+
+            <!-- 3. Priority badge using getter -->
+            <span class={priorityClass}>
+                {priority > 8 ? 'Critical' : priority > 5 ? 'High' : 'Normal'}
+            </span>
+
+            <!-- 4. Dynamic CSS class for overdue status using getter -->
+            <div class={daysOpenClass}>
+                Status: {daysOpen > 14 ? 'Overdue — Immediate Attention Required' : 'On Track'}
+            </div>
+
+            <!-- 5. Total billable hours with nullish coalescing fallback -->
+            <p>
+                Billable Hours: {totalBillableHours ?? 'No hours logged yet'}
+            </p>
+
+            <!-- 6. SLA expiration with optional chaining + nullish coalescing -->
+            <p>
+                SLA Expires: {slaExpirationDate ?? 'No SLA assigned'}
+            </p>
+
+            <!-- 7. Computed total cost (arithmetic) -->
+            <p>
+                Estimated Cost: ${hourlyRate * (totalBillableHours ?? 0)}
+            </p>
+
+        </div>
+    </lightning-card>
+</template>
