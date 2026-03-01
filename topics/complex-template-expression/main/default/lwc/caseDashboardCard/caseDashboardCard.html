@@ -13,13 +13,13 @@
                 Case Age: {daysOpen} days
             </p>
 
-            <!-- 3. Priority badge using getter -->
-            <span class={priorityClass}>
+            <!-- 3. Priority badge -->
+            <span class="{priority > 8 ? 'badge badge-critical' : priority > 5 ? 'badge badge-high' : 'badge badge-normal'}">
                 {priority > 8 ? 'Critical' : priority > 5 ? 'High' : 'Normal'}
             </span>
 
-            <!-- 4. Dynamic CSS class for overdue status using getter -->
-            <div class={daysOpenClass}>
+            <!-- 4. Dynamic CSS class for overdue status-->
+            <div class="{daysOpen > 14 ? 'case-overdue' : 'case-on-track'}">
                 Status: {daysOpen > 14 ? 'Overdue — Immediate Attention Required' : 'On Track'}
             </div>
 

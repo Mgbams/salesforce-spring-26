@@ -26,7 +26,7 @@ LWC's original template system only allowed plain property references. Every com
 
 **Complex Template Expressions** (Spring '26, API 66.0+) allows a supported subset of JavaScript expressions directly inside LWC HTML templates, in text node positions. This keeps display logic in the presentation layer where it belongs and reduces JavaScript class bloat.
 
-> **Current Beta scope:** Expressions work in text node positions only. HTML attribute bindings (e.g. `class={...}`) still require a simple property reference or getter.
+> **Current Beta scope:** Expressions work in both text node positions and attribute bindings. When used in attributes, the expression must be quoted: class="{...}". Unquoted attribute expressions cause a compilation error.
 
 ---
 
@@ -38,7 +38,10 @@ LWC's original template system only allowed plain property references. Every com
 | Conditional text | `{priority > 8 ? 'Critical' : 'Normal'}` |
 | Nullish coalescing | `{totalBillableHours ?? 'No hours logged yet'}` |
 | Inline arithmetic | `{hourlyRate * (totalBillableHours ?? 0)}` |
-| Getter-backed attributes | `class={priorityClass}` (Beta workaround) |
+| Quoted attribute expressions | `class="{priority > 8 ? 'badge-critical' : 'badge-normal'}"` |
+| Getter-backed attributes | `class={priorityClass}` (valid alternative for reusable or testable logic) |
+
+
 
 ---
 
@@ -103,24 +106,22 @@ Write JavaScript expressions directly between HTML tags.
 <p>${hourlyRate * (totalBillableHours ?? 0)}</p>
 ```
 
-### 3️⃣ Attribute Limitation (Beta)
+### 3️⃣ Attribute Expressions Must Be Quoted
 
-Complex expressions inside attribute bindings are **not yet supported**. Use a getter instead.
+Complex expressions work in attribute bindings — but the expression must be wrapped in quotes.
 ```html
-<!-- ❌ Fails in Beta -->
+<!-- ❌ Compilation error — unquoted -->
 <span class={priority > 8 ? 'badge-critical' : 'badge-normal'}>...</span>
 
-<!-- ✅ Correct pattern -->
-<span class={priorityClass}>
-  {priority > 8 ? 'Critical' : priority > 5 ? 'High' : 'Normal'}
-</span>
+<!-- ✅ Valid — quoted expression in attribute -->
+<span class="{priority > 8 ? 'badge-critical' : 'badge-normal'}">...</span>
 ```
-```js
-get priorityClass() {
-  if (this.priority > 8) return 'badge badge-critical';
-  if (this.priority > 5) return 'badge badge-high';
-  return 'badge badge-normal';
-}
+
+Plain property references remain unquoted as before:
+```html
+<!-- ✅ Simple binding — no quotes needed -->
+<span class={simpleProperty}></span>
+```
 ```
 
 ### 4️⃣ `??` vs `||`
@@ -136,38 +137,15 @@ Always use `??` for nullable numeric fields. `||` incorrectly treats `0` as fals
 
 ---
 
-## 🧪 How It Works
-```text
-@api properties received by component
-          │
-          ▼
-┌─────────────────────────────────────────────┐
-│            caseDashboardCard                │
-│                                             │
-│  Text nodes   → Complex expressions         │
-│                 {firstName + ' ' + lastName}│
-│                 {priority > 8 ? '...' : …}  │
-│                 {totalBillableHours ?? '…'} │
-│                 {hourlyRate * (hours ?? 0)} │
-│                                             │
-│  Attributes   → Getters (Beta workaround)   │
-│    class=       get priorityClass()         │
-│    class=       get daysOpenClass()         │
-└─────────────────────────────────────────────┘
-          │
-          ▼
-  Virtual DOM re-evaluates on property change
-```
-
 ### Expression Outcome Map
 
 | Scenario | Mechanism | Output |
 |---|---|---|
 | Full name | Inline expression | `Sarah Connor` |
 | Priority label | Inline expression | `Critical` |
-| Priority badge CSS | Getter | `badge badge-critical` |
+| Priority badge CSS | Quoted attribute expression or getter | `badge badge-critical` |
 | Overdue status text | Inline expression | `Overdue — Immediate Attention Required` |
-| Overdue CSS class | Getter | `case-overdue` |
+| Overdue CSS class | Quoted attribute expression or getter | `case-overdue` |
 | Billable hours fallback | Inline expression | `No hours logged yet` |
 | Estimated cost | Inline expression | `$0` |
 
@@ -200,7 +178,7 @@ force-app/
 | Issue | Cause | Solution |
 |---|---|---|
 | Expressions render as raw `{...}` text | `apiVersion` below `66.0` | Set `<apiVersion>66.0</apiVersion>` and redeploy |
-| `class=` expression fails to deploy | Attribute expressions unsupported in Beta | Replace with a getter in `.js` |
+| `class=` expression fails to deploy | Expression is unquoted in the attribute |  attributeWrap in quotes: class="{...}" or use a getter |
 | Component missing in App Builder | `isExposed` is `false` or no `<target>` | Add `<isExposed>true</isExposed>` and a valid `<target>` |
 | `NaN` in cost field | `totalBillableHours` is `null`, unguarded | Use `{hourlyRate * (totalBillableHours ?? 0)}` |
 | `0` hours shows fallback text | `||` used instead of `??` | Replace `||` with `??` |
@@ -211,7 +189,7 @@ force-app/
 ## ✅ Best Practices
 
 - Opt in per component only — do not bump `apiVersion` on untested components
-- Use expressions for text nodes only until attribute support reaches GA
+- Attribute expressions are supported — always quote them: class="{...}". Use a getter instead if the expression is reused or needs unit testing.
 - Use `??` over `||` for all nullable numeric or boolean fields
 - Move logic to a named getter if an expression exceeds one readable line or is reused more than twice
 - Comment Beta-workaround getters so they can be removed once attribute support ships
