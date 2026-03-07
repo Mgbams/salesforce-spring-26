@@ -1,0 +1,80 @@
+<template>
+    <lightning-card title="Case Queue" icon-name="standard:case">
+        <div class="slds-p-around_medium">
+
+            <!-- Filter bar -->
+            <div class="slds-grid slds-gutters slds-m-bottom_medium">
+                <div class="slds-col">
+                    <lightning-combobox
+                        label="Region"
+                        value={selectedRegion}
+                        options={regionOptions}
+                        onchange={handleRegionChange}>
+                    </lightning-combobox>
+                </div>
+                <div class="slds-col">
+                    <lightning-combobox
+                        label="Priority"
+                        value={selectedPriority}
+                        options={priorityOptions}
+                        onchange={handlePriorityChange}>
+                    </lightning-combobox>
+                </div>
+            </div>
+
+            <!-- Case list — shown when records exist -->
+            <template lwc:if={hasCases}>
+                <lightning-datatable
+                    key-field="Id"
+                    data={filteredCases}
+                    columns={columns}>
+                </lightning-datatable>
+            </template>
+
+            <!-- Empty state — shown when no records match the filter -->
+            <template lwc:elseif={isFiltered}>
+                <lightning-empty-state
+                    title="No Cases Match Your Filters"
+                    illustration-name="noresults:filter"
+                    alternative-text="No cases match the selected region and priority filters.">
+
+                    <p slot="description">
+                        No open cases match the selected region and priority.
+                        Try adjusting your filters or clear them to see all cases.
+                    </p>
+
+                    <lightning-button
+                        slot="cta"
+                        label="Clear Filters"
+                        variant="brand"
+                        onclick={handleClearFilters}>
+                    </lightning-button>
+
+                </lightning-empty-state>
+            </template>
+
+            <!-- Empty state — shown when queue is genuinely empty (no filters active) -->
+            <template lwc:else>
+                <lightning-empty-state
+                    title="All Clear"
+                    illustration-name="success:new"
+                    alternative-text="No open cases in the queue.">
+
+                    <p slot="description">
+                        There are no open cases in this queue right now.
+                        Check back later or create a new case.
+                    </p>
+
+                    <lightning-button
+                        slot="cta"
+                        label="Create New Case"
+                        variant="brand"
+                        onclick={handleNewCase}>
+                    </lightning-button>
+
+                </lightning-empty-state>
+            </template>
+
+        </div>
+    </lightning-card>
+</template>
