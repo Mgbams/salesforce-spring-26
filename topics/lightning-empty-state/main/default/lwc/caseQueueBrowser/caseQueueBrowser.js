@@ -1,6 +1,7 @@
 import { LightningElement, wire } from 'lwc';
 import { NavigationMixin } from 'lightning/navigation';
 import getCases from '@salesforce/apex/CaseQueueController.getCases';
+import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 
 const COLUMNS = [
     { label: 'Case Number', fieldName: 'CaseNumber' },
@@ -40,9 +41,20 @@ export default class CaseQueueBrowser extends NavigationMixin(LightningElement) 
         if (data) {
             this.allCases = data;
         } else if (error) {
-            console.error('Error loading cases:', error);
+            this.showErrorToast(error);
         }
     }
+
+    showErrorToast(error) {
+        this.dispatchEvent(
+            new ShowToastEvent({
+                title: 'Error loading cases',
+                message: error?.body?.message || 'An unexpected error occurred while retrieving cases.',
+                variant: 'error'
+            })
+        );
+    }
+
 
     // Returns cases filtered by current selections
     get filteredCases() {
