@@ -1,9 +1,7 @@
 # ⚡ lwc-track-performance-demo
 
-![Salesforce](https://img.shields.io/badge/Salesforce-Spring%20'26-blue)
 ![LWC](https://img.shields.io/badge/LWC-JavaScript-purple)
 ![SFDX](https://img.shields.io/badge/SFDX-CLI-green)
-![Status](https://img.shields.io/badge/Feature-GA-brightgreen)
 
 ---
 
