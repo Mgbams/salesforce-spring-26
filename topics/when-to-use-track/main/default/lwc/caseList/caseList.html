@@ -1,0 +1,39 @@
+<template>
+    <lightning-card title="Support Cases" icon-name="standard:case">
+        <div class="slds-m-around_medium">
+
+            <lightning-combobox
+                label="Filter by Status"
+                value={filterStatus}
+                options={statusOptions}
+                onchange={handleFilterChange}
+                class="slds-m-bottom_medium">
+            </lightning-combobox>
+
+            <template if:true={errorMessage}>
+                <div class="slds-notify slds-notify_alert slds-alert_error slds-m-bottom_small" role="alert">
+                    <span class="slds-assistive-text">Error</span>
+                    <p>{errorMessage}</p>
+                </div>
+            </template>
+
+            <template if:true={cases.length}>
+                <lightning-datatable
+                    key-field="Id"
+                    data={cases}
+                    columns={columns}
+                    onrowaction={handleRowAction}>
+                </lightning-datatable>
+            </template>
+
+            <template if:false={cases.length}>
+                <div class="slds-illustration slds-illustration_small slds-m-top_large">
+                    <p class="slds-text-align_center slds-text-color_weak">
+                        No cases found for the selected status.
+                    </p>
+                </div>
+            </template>
+
+        </div>
+    </lightning-card>
+</template>
