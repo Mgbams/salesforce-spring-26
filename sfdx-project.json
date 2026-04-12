@@ -19,6 +19,10 @@
     {
       "path": "topics/when-to-use-track",
       "default": false
+    },
+    {
+      "path": "topics/wire-vs-imperative",
+      "default": false
     }
   ],
   "name": "Spring 26",
