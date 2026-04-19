@@ -30,11 +30,7 @@ export default class OpportunityWorkbench extends LightningElement {
 
     wiredResponse;
 
-    @wire(getOpenOpportunities, {
-        minAmount: '$minAmount',
-        pageSize: '$pageSize',
-        pageNumber: '$pageNumber'
-    })
+    @wire(getOpenOpportunities, {minAmount: '$minAmount', pageSize: '$pageSize', pageNumber: '$pageNumber'})
     wiredOpportunities(value) {
         this.wiredResponse = value;
         const { data, error } = value;

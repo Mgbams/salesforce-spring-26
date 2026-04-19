@@ -23,6 +23,10 @@
     {
       "path": "topics/wire-vs-imperative",
       "default": false
+    },
+    {
+      "path": "topics/replace-future-method-with-queueable",
+      "default": false
     }
   ],
   "name": "Spring 26",
