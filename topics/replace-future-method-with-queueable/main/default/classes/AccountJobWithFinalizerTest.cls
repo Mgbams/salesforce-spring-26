@@ -26,44 +26,31 @@ private class AccountJobWithFinalizerTest {
     }
 
     @IsTest
-    private class AccountJobWithFinalizerFailureTest {
+    static void testRetryTriggeredOnFailure() {
+        Account valid = new Account(Name = 'Test');
+        insert valid;
 
-        @IsTest
-        static void testRetryTriggeredOnFailure() {
+        SyncPayload payload = new SyncPayload(
+            new List<Account>{ valid },
+            'Test',
+            false
+        );
 
-            // Create invalid record to force DML failure
-            Account acc = new Account(); // Missing required Name
-            insert acc; // This will fail → so instead simulate differently
+        valid.Name = null;
 
-            // Better approach: force failure via update
-            Account valid = new Account(Name = 'Test');
-            insert valid;
+        Test.startTest();
+        System.enqueueJob(new AccountJobWithFinalizer(payload));
+        Test.stopTest();
 
-            // Create payload
-            SyncPayload payload = new SyncPayload(
-                new List<Account>{ valid },
-                'Test',
-                false
-            );
+        Integer jobCount = [
+            SELECT COUNT()
+            FROM AsyncApexJob
+            WHERE JobType = 'Queueable'
+        ];
 
-            // Force failure by making record invalid before update
-            valid.Name = null;
-
-            Test.startTest();
-            System.enqueueJob(new AccountJobWithFinalizer(payload));
-            Test.stopTest();
-
-            // Assert retry happened by checking AsyncApexJob count
-            Integer jobCount = [
-                SELECT COUNT()
-                FROM AsyncApexJob
-                WHERE JobType = 'Queueable'
-            ];
-
-            Assert.isTrue(
-                jobCount > 1,
-                'Expected retry job to be enqueued after failure.'
-            );
-        }
+        Assert.isTrue(
+            jobCount > 1,
+            'Expected retry job to be enqueued after failure.'
+        );
     }
 }
